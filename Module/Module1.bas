@@ -1,5 +1,6 @@
 Attribute VB_Name = "Module1"
 Public skn1 As SkinFramework
+Public userName As String
 Public Sub skin()
 
 

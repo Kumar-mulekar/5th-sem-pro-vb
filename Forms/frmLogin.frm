@@ -346,6 +346,7 @@ pRecordset.MoveFirst
 While Not pRecordset.EOF = True
   If pRecordset.Fields(4).Value = Text1.Text And pRecordset.Fields(0).Value = Text2.Text Then
      Form1.Hide
+     userName = pRecordset.Fields(2).Value
      frmmain.Show
      flag = False
   End If

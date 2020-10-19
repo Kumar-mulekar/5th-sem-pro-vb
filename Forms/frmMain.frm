@@ -19,6 +19,25 @@ Begin VB.Form frmmain
       TabIndex        =   9
       Top             =   0
       Width           =   9015
+      Begin VB.Label Label9 
+         Alignment       =   2  'Center
+         Caption         =   "Label9"
+         BeginProperty Font 
+            Name            =   "@Arial Unicode MS"
+            Size            =   20.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   10
+         Top             =   240
+         Width           =   1815
+      End
    End
    Begin VB.Frame Frame1 
       BorderStyle     =   0  'None
@@ -220,6 +239,16 @@ Frame2.Width = frmmain.Width
 Frame2.Top = frmmain.Top
 Frame2.Height = 1000
 Frame2.BackColor = RGB(255, 255, 255)
+
+
+'*********label9*******
+Label9.Left = Frame2.Left
+Label9.Top = Frame2.Top
+Label9.Height = Frame2.Height
+Label9.Width = Frame1.Width
+Label9.BackColor = RGB(51, 49, 44)
+Label9.Caption = "Admin" '"USER:" + userName
+
 End Sub
 
 Private Sub Label1_Click()
