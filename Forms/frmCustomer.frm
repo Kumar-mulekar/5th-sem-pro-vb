@@ -163,24 +163,49 @@ End Sub
 Private Sub Command1_Click()
    'add data to database
     recC.AddNew
-    'recC.Fields(0).Value = Text1.Text
+    Call textTodata 'to send data to database
+    recC.Update
+    MsgBox "DONE!!!!"
+    
+    'text boxes null value
+    Call initText
+    
+    
+       
+End Sub
+Private Sub textTodata()
+    'textbox values to database
     recC.Fields(1).Value = Text2.Text
     recC.Fields(2).Value = Text7.Text
     recC.Fields(3).Value = Text3.Text
     recC.Fields(4).Value = Text4.Text
     recC.Fields(5).Value = Text5.Text
-    recC.Update
-    MsgBox "DONE!!!!"
-    
-    'text boxes
+   
+End Sub
+Private Sub initText()
+    'initialize with null values
     Text2.Text = "First Name"
     Text7.Text = "Last Name"
     Text3.Text = "Address"
     Text4.Text = "E-mail"
     Text5.Text = "Ph.no"
-   
+End Sub
+Private Sub Command2_Click()
     
+    'recC.EditMode
+    Call textTodata
+    recC.Update
+    MsgBox "DONE!!!!"
+    'textbox null
+    Call initText
+
     
+End Sub
+
+Private Sub Command3_Click()
+recC.Delete
+MsgBox "DONE!!!!"
+Call initText
 End Sub
 
 Private Sub Command4_Click()
@@ -194,6 +219,7 @@ Private Sub Command4_Click()
                   Call init_textboxes
                   'set flag to false
                   flag = False
+                  Exit Sub
             End If
             recC.MoveNext
         Wend
@@ -209,6 +235,7 @@ Private Sub Command4_Click()
                     Call init_textboxes
                   'set flag to false
                    flag = False
+                   Exit Sub
             End If
             recC.MoveNext
         Wend
@@ -224,6 +251,7 @@ Private Sub init_textboxes()
     Text7.Text = recC.Fields(2).Value
     Text3.Text = recC.Fields(3).Value
     Text4.Text = recC.Fields(4).Value
+    Text5.Text = recC.Fields(5).Value
 End Sub
 
 Private Sub Form_Load()
