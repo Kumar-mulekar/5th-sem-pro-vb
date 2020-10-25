@@ -333,6 +333,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
 Public tm, flef, whichframe As Integer
 Public db As DAO.Database
 Public pRecordset As DAO.Recordset
@@ -342,15 +343,30 @@ Public pRecordset As DAO.Recordset
 Private Sub btnlogin_Click()
 Dim flag, log As Boolean
 flag = True
-pRecordset.MoveFirst
-While Not pRecordset.EOF = True
-  If pRecordset.Fields(4).Value = Text1.Text And pRecordset.Fields(0).Value = Text2.Text Then
+'pRecordset.MoveFirst
+'While Not pRecordset.EOF = True
+  'If pRecordset.Fields(4).Value = Text1.Text And pRecordset.Fields(0).Value = Text2.Text Then
+     'Form1.Hide
+     'userName = pRecordset.Fields(2).Value
+     'frmmain.Show
+     'flag = False
+  'End If
+  'pRecordset.MoveNext
+  
+'Wend
+'If flag = True Then
+   'MsgBox ("Invalid Details")
+'End If
+
+rec.MoveFirst
+While Not rec.EOF = True
+  If rec.Fields(1).Value = Text1.Text And rec.Fields(2).Value = Text2.Text Then
      Form1.Hide
-     userName = pRecordset.Fields(2).Value
+     userName = rec.Fields(1).Value
      frmmain.Show
      flag = False
   End If
-  pRecordset.MoveNext
+  rec.MoveNext
   
 Wend
 If flag = True Then
@@ -394,6 +410,11 @@ Frame2.Visible = False
 Set db = OpenDatabase(App.Path + "\Databases\8bit.mdb")
 Set pRecordset = db.OpenRecordset("select *from login")
 
+
+'database
+Call Module2.main
+Set rec = New ADODB.Recordset
+rec.Open "select *from login", con, adOpenDynamic, adLockPessimistic, adCmdText
 
 End Sub
 

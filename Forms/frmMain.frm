@@ -247,7 +247,7 @@ Label9.Top = Frame2.Top
 Label9.Height = Frame2.Height
 Label9.Width = Frame1.Width
 Label9.BackColor = RGB(51, 49, 44)
-Label9.Caption = "Admin" '"USER:" + userName
+Label9.Caption = userName
 
 End Sub
 
