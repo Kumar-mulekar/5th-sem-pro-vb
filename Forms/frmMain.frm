@@ -14,25 +14,45 @@ Begin VB.Form frmmain
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame2 
       BorderStyle     =   0  'None
-      Height          =   495
+      Height          =   975
       Left            =   0
       TabIndex        =   9
       Top             =   0
-      Width           =   9015
+      Width           =   11655
+      Begin VB.Label Label10 
+         Appearance      =   0  'Flat
+         BackColor       =   &H80000005&
+         BackStyle       =   0  'Transparent
+         BeginProperty Font 
+            Name            =   "Lucida Bright"
+            Size            =   20.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   855
+         Left            =   3960
+         TabIndex        =   11
+         Top             =   120
+         Width           =   6735
+      End
       Begin VB.Label Label9 
          Alignment       =   2  'Center
          Caption         =   "Label9"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   20.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FFFFFF&
-         Height          =   255
+         Height          =   615
          Left            =   240
          TabIndex        =   10
          Top             =   240
@@ -46,6 +66,13 @@ Begin VB.Form frmmain
       TabIndex        =   0
       Top             =   -120
       Width           =   3735
+      Begin VB.Line Line1 
+         DrawMode        =   8  'Xor Pen
+         X1              =   0
+         X2              =   3720
+         Y1              =   1200
+         Y2              =   1200
+      End
       Begin XtremeSkinFramework.SkinFramework skn 
          Left            =   480
          Top             =   1800
@@ -57,10 +84,10 @@ Begin VB.Form frmmain
       Begin VB.Label Label8 
          Caption         =   "EXIT"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -75,10 +102,10 @@ Begin VB.Form frmmain
       Begin VB.Label Label7 
          Caption         =   "REPORTS"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -87,16 +114,16 @@ Begin VB.Form frmmain
          Height          =   615
          Left            =   1320
          TabIndex        =   7
-         Top             =   6480
+         Top             =   5400
          Width           =   2415
       End
       Begin VB.Label Label6 
          Caption         =   "STOCKS"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -105,16 +132,16 @@ Begin VB.Form frmmain
          Height          =   615
          Left            =   1320
          TabIndex        =   6
-         Top             =   5880
+         Top             =   4800
          Width           =   2415
       End
       Begin VB.Label Label5 
          Caption         =   "PURCHASE"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -123,16 +150,16 @@ Begin VB.Form frmmain
          Height          =   615
          Left            =   1320
          TabIndex        =   5
-         Top             =   5280
+         Top             =   4200
          Width           =   2415
       End
       Begin VB.Label Label4 
          Caption         =   "SALES"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -141,16 +168,16 @@ Begin VB.Form frmmain
          Height          =   615
          Left            =   1320
          TabIndex        =   4
-         Top             =   4680
+         Top             =   3600
          Width           =   2415
       End
       Begin VB.Label Label3 
          Caption         =   "SUPPLIER"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -159,16 +186,16 @@ Begin VB.Form frmmain
          Height          =   615
          Left            =   1320
          TabIndex        =   3
-         Top             =   4080
+         Top             =   3000
          Width           =   2415
       End
       Begin VB.Label Label2 
          Caption         =   "CUSTOMER"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -177,16 +204,16 @@ Begin VB.Form frmmain
          Height          =   615
          Left            =   1320
          TabIndex        =   2
-         Top             =   3480
+         Top             =   2400
          Width           =   2415
       End
       Begin VB.Label Label1 
          Caption         =   "HOME"
          BeginProperty Font 
-            Name            =   "@Arial Unicode MS"
+            Name            =   "Lucida Bright"
             Size            =   15.75
             Charset         =   0
-            Weight          =   700
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -195,7 +222,7 @@ Begin VB.Form frmmain
          Height          =   615
          Left            =   1320
          TabIndex        =   1
-         Top             =   2880
+         Top             =   1800
          Width           =   2415
       End
    End
@@ -256,6 +283,9 @@ lblpre = lblcl
 lblcl = 1
 Call lblclick
 Label1.BackColor = RGB(0, 172, 193)
+'heading label
+Label10.Caption = Label1.Caption
+
 
 End Sub
 
@@ -265,6 +295,8 @@ lblcl = 2
 Call lblclick
 Label2.BackColor = RGB(0, 172, 193)
 frmcustomer.Show
+'heading label
+Label10.Caption = Label2.Caption
 End Sub
 
 Private Sub Label3_Click()
@@ -272,6 +304,9 @@ lblpre = lblcl
 lblcl = 3
 Call lblclick
 Label3.BackColor = RGB(0, 172, 193)
+frmSupplier.Show
+'heading label
+Label10.Caption = Label3.Caption
 End Sub
 
 Private Sub Label4_Click()
@@ -279,6 +314,9 @@ lblpre = lblcl
 lblcl = 4
 Call lblclick
 Label4.BackColor = RGB(0, 172, 193)
+'heading label
+Label10.Caption = Label4.Caption
+frmSalesOrd.Show
 End Sub
 
 Private Sub Label5_Click()
@@ -286,6 +324,11 @@ lblpre = lblcl
 lblcl = 5
 Call lblclick
 Label5.BackColor = RGB(0, 172, 193)
+'frmPurchase.Show
+Form2.Show
+
+'heading label
+Label10.Caption = Label5.Caption
 End Sub
 
 Private Sub Label6_Click()
@@ -293,6 +336,9 @@ lblpre = lblcl
 lblcl = 6
 Call lblclick
 Label6.BackColor = RGB(0, 172, 193)
+frmStocks.Show
+'heading label
+Label10.Caption = Label6.Caption
 End Sub
 
 Private Sub Label7_Click()
@@ -300,6 +346,8 @@ lblpre = lblcl
 lblcl = 7
 Call lblclick
 Label7.BackColor = RGB(0, 172, 193)
+'heading label
+Label10.Caption = Label7.Caption
 End Sub
 
 Private Sub Label8_Click()

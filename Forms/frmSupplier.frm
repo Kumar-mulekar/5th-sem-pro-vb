@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.Form frmcustomer 
+Begin VB.Form frmSupplier 
    BorderStyle     =   0  'None
    Caption         =   "Form2"
    ClientHeight    =   8205
@@ -130,21 +130,21 @@ Begin VB.Form frmcustomer
       Height          =   495
       Left            =   2880
       TabIndex        =   0
-      Text            =   "C-ID"
+      Text            =   "S-ID"
       Top             =   2520
       Width           =   1935
    End
 End
-Attribute VB_Name = "frmcustomer"
+Attribute VB_Name = "frmSupplier"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim recC As ADODB.Recordset
+Dim recS As ADODB.Recordset
 Private Sub Combo1_click()
     If Combo1.Text = "EDIT" Or Combo1.Text = "DELETE" Then
+        MsgBox "Enter First and Last Name then hit Enter."
         Command4.Visible = True
-        MsgBox "Enter First and Last Name then hit SEARCH."
     Else
         Command4.Visible = False
     End If
@@ -171,9 +171,9 @@ End Sub
 
 Private Sub Command1_Click()
    'add data to database
-    recC.AddNew
+    recS.AddNew
     Call textTodata 'to send data to database
-    recC.Update
+    recS.Update
     MsgBox "DONE!!!!"
     
     'text boxes null value
@@ -184,11 +184,11 @@ Private Sub Command1_Click()
 End Sub
 Private Sub textTodata()
     'textbox values to database
-    recC.Fields(1).Value = Text2.Text
-    recC.Fields(2).Value = Text7.Text
-    recC.Fields(3).Value = Text3.Text
-    recC.Fields(4).Value = Text4.Text
-    recC.Fields(5).Value = Text5.Text
+    recS.Fields(1).Value = Text2.Text
+    recS.Fields(2).Value = Text7.Text
+    recS.Fields(3).Value = Text3.Text
+    recS.Fields(4).Value = Text4.Text
+    recS.Fields(5).Value = Text5.Text
    
 End Sub
 Private Sub initText()
@@ -203,7 +203,7 @@ Private Sub Command2_Click()
     
     'recC.EditMode
     Call textTodata
-    recC.Update
+    recS.Update
     MsgBox "DONE!!!!"
     'textbox null
     Call initText
@@ -212,7 +212,7 @@ Private Sub Command2_Click()
 End Sub
 
 Private Sub Command3_Click()
-recC.Delete
+recS.Delete
 MsgBox "DONE!!!!"
 Call initText
 End Sub
@@ -220,39 +220,39 @@ End Sub
 Private Sub Command4_Click()
     Dim flag As Boolean
     flag = True
-    recC.MoveFirst
-    While Not recC.EOF = True
-            If recC.Fields(1).Value = Text2.Text And recC.Fields(2).Value = Text7.Text Then
+    recS.MoveFirst
+    While Not recS.EOF = True
+            If recS.Fields(1).Value = Text2.Text And recS.Fields(2).Value = Text7.Text Then
                    'initialize text boxes
                     Call init_textboxes
                   'set flag to false
-                    flag = False
+                   flag = False
                    Exit Sub
             End If
-            recC.MoveNext
+            recS.MoveNext
     Wend
     If flag = True Then
-          MsgBox ("Invalid Details")
+        MsgBox ("Invalid Details")
     End If
     
 End Sub
 Private Sub init_textboxes()
 'show data in text boxes
-    Text2.Text = recC.Fields(1).Value
-    Text7.Text = recC.Fields(2).Value
-    Text3.Text = recC.Fields(3).Value
-    Text4.Text = recC.Fields(4).Value
-    Text5.Text = recC.Fields(5).Value
+    Text2.Text = recS.Fields(1).Value
+    Text7.Text = recS.Fields(2).Value
+    Text3.Text = recS.Fields(3).Value
+    Text4.Text = recS.Fields(4).Value
+    Text5.Text = recS.Fields(5).Value
 End Sub
 
 Private Sub Form_Load()
 
 
-frmcustomer.BackColor = RGB(238, 238, 238)
-frmcustomer.Top = frmmain.Top + 1000
-frmcustomer.Left = frmmain.Left + 3735
-frmcustomer.Height = frmmain.Height - 1000
-frmcustomer.Width = frmmain.Width - 3735
+frmSupplier.BackColor = RGB(238, 238, 238)
+frmSupplier.Top = frmmain.Top + 1000
+frmSupplier.Left = frmmain.Left + 3735
+frmSupplier.Height = frmmain.Height - 1000
+frmSupplier.Width = frmmain.Width - 3735
 
 '********shapes cust******
 
@@ -266,8 +266,8 @@ frmcustomer.Width = frmmain.Width - 3735
  
  'database
  Call Module2.main
- Set recC = New ADODB.Recordset
- recC.Open "select *from Customer", con, adOpenDynamic, adLockPessimistic, adCmdText
+ Set recS = New ADODB.Recordset
+ recS.Open "select *from Supplier", con, adOpenDynamic, adLockPessimistic, adCmdText
  
  'disable command buttons
  Command1.Enabled = False

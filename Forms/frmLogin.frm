@@ -231,7 +231,7 @@ Begin VB.Form Form1
       End
       Begin VB.Label Label7 
          BackStyle       =   0  'Transparent
-         Caption         =   "Passcode"
+         Caption         =   "Answer"
          BeginProperty Font 
             Name            =   "Times New Roman"
             Size            =   12
@@ -335,11 +335,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Public tm, flef, whichframe As Integer
-Public db As DAO.Database
-Public pRecordset As DAO.Recordset
-
-
-
+Public pRecordset As adodb.Recordset
 Private Sub btnlogin_Click()
 Dim flag, log As Boolean
 flag = True
@@ -358,15 +354,15 @@ flag = True
    'MsgBox ("Invalid Details")
 'End If
 
-rec.MoveFirst
-While Not rec.EOF = True
-  If rec.Fields(1).Value = Text1.Text And rec.Fields(2).Value = Text2.Text Then
+pRecordset.MoveFirst
+While Not pRecordset.EOF = True
+  If pRecordset.Fields(1).Value = Text1.Text And pRecordset.Fields(2).Value = Text2.Text Then
      Form1.Hide
-     userName = rec.Fields(1).Value
+     userName = pRecordset.Fields(1).Value
      frmmain.Show
      flag = False
   End If
-  rec.MoveNext
+  pRecordset.MoveNext
   
 Wend
 If flag = True Then
@@ -381,11 +377,10 @@ Dim flag As Boolean
 flag = True
 pRecordset.MoveFirst
 While Not pRecordset.EOF = True
-  If pRecordset.Fields(3).Value = Text5.Text And pRecordset.Fields(1).Value = Text3.Text And pRecordset.Fields(2).Value = Text4.Text Then
+  If pRecordset.Fields("fname").Value = Text3.Text And pRecordset.Fields("lname").Value = Text4.Text And pRecordset.Fields("quetion").Value = Text5.Text Then
      flag = False
      If (Text6.Text = Text7.Text) Then
-        pRecordset.Edit
-        pRecordset.Fields(0).Value = Text6.Text
+        pRecordset.Fields("password").Value = Text6.Text
         pRecordset.Update
         MsgBox ("DONE!!!!")
      Else
@@ -405,17 +400,13 @@ Form1.Picture = Nothing
 skn.LoadSkin App.Path + "\Styles\Office2010.cjstyles", ""
 'Office2007 Office2010  WinXP.Luna WinXP.Royale Codejock
 skn.ApplyWindow Me.hWnd
-
 Frame2.Visible = False
-Set db = OpenDatabase(App.Path + "\Databases\8bit.mdb")
-Set pRecordset = db.OpenRecordset("select *from login")
 
 
 'database
 Call Module2.main
-Set rec = New ADODB.Recordset
-rec.Open "select *from login", con, adOpenDynamic, adLockPessimistic, adCmdText
-
+Set pRecordset = New adodb.Recordset
+pRecordset.Open "select *from login", con, adOpenDynamic, adLockPessimistic, adCmdText
 End Sub
 
 
