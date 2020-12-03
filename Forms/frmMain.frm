@@ -66,6 +66,24 @@ Begin VB.Form frmmain
       TabIndex        =   0
       Top             =   -120
       Width           =   3735
+      Begin VB.Label Label11 
+         Caption         =   "USER"
+         BeginProperty Font 
+            Name            =   "Lucida Bright"
+            Size            =   15.75
+            Charset         =   0
+            Weight          =   600
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   615
+         Left            =   1320
+         TabIndex        =   12
+         Top             =   6000
+         Width           =   2415
+      End
       Begin VB.Line Line1 
          DrawMode        =   8  'Xor Pen
          X1              =   0
@@ -257,7 +275,7 @@ Label5.BackColor = RGB(51, 49, 44)
 Label6.BackColor = RGB(51, 49, 44)
 Label7.BackColor = RGB(51, 49, 44)
 Label8.BackColor = RGB(51, 49, 44)
-
+Label11.BackColor = RGB(51, 49, 44)
 
 
 '*************frame 2************
@@ -276,6 +294,14 @@ Label9.Width = Frame1.Width
 Label9.BackColor = RGB(51, 49, 44)
 Label9.Caption = userName
 
+'+++++++++++++++++++++ user access and hiding user lbl from user
+If userAccess = "Admin" Then
+    Label11.Visible = True
+Else
+    Label11.Visible = False
+End If
+
+'++++++++++++++++++++++++++++++++++
 End Sub
 
 Private Sub Label1_Click()
@@ -287,6 +313,16 @@ Label1.BackColor = RGB(0, 172, 193)
 Label10.Caption = Label1.Caption
 
 
+End Sub
+
+Private Sub Label11_Click()
+lblpre = lblcl
+lblcl = 11
+Call lblclick
+Label11.BackColor = RGB(0, 172, 193)
+frmUser.Show
+'heading label
+Label10.Caption = Label11.Caption
 End Sub
 
 Private Sub Label2_Click()
@@ -316,7 +352,7 @@ Call lblclick
 Label4.BackColor = RGB(0, 172, 193)
 'heading label
 Label10.Caption = Label4.Caption
-frmSalesOrd.Show
+frmSales.Show
 End Sub
 
 Private Sub Label5_Click()
@@ -348,6 +384,7 @@ Call lblclick
 Label7.BackColor = RGB(0, 172, 193)
 'heading label
 Label10.Caption = Label7.Caption
+frmReport.Show
 End Sub
 
 Private Sub Label8_Click()
@@ -371,6 +408,8 @@ Case 7:
 Label7.BackColor = RGB(51, 49, 44)
 Case 8:
 Label8.BackColor = RGB(51, 49, 44)
+Case 11:
+Label11.BackColor = RGB(51, 49, 44)
 End Select
 
          

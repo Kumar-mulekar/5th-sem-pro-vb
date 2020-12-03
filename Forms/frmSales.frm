@@ -1,11 +1,11 @@
 VERSION 5.00
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Begin VB.Form Form2 
+Begin VB.Form frmSales 
    Appearance      =   0  'Flat
    BackColor       =   &H80000005&
    BorderStyle     =   0  'None
-   Caption         =   "Form2"
+   Caption         =   "Sales"
    ClientHeight    =   8205
    ClientLeft      =   0
    ClientTop       =   0
@@ -57,7 +57,7 @@ Begin VB.Form Form2
       OtherAttributes =   ""
       UserName        =   ""
       Password        =   ""
-      RecordSource    =   "select * from Stock_in"
+      RecordSource    =   "select * from Stock_out"
       Caption         =   "Adodc2"
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
@@ -197,12 +197,12 @@ Begin VB.Form Form2
          Width           =   2055
       End
       Begin VB.Label Label2 
-         Caption         =   "SUPPLIER :"
+         Caption         =   "CUSTOMER "
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   13.5
+            Name            =   "Lucida Bright"
+            Size            =   12
             Charset         =   0
-            Weight          =   400
+            Weight          =   600
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -214,7 +214,7 @@ Begin VB.Form Form2
          Width           =   1455
       End
       Begin VB.Label Label1 
-         Caption         =   "P-ID"
+         Caption         =   "S-ID"
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -346,13 +346,13 @@ Begin VB.Form Form2
       _Version        =   393216
    End
 End
-Attribute VB_Name = "Form2"
+Attribute VB_Name = "frmSales"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
-Public sid, supid, datagrid1_id, datagrid2_id As Integer
+Public cid, cusid, datagrid1_id, datagrid2_id As Integer
 Dim rec As New ADODB.Recordset
 Dim auto, recStdIn As ADODB.Recordset
 
@@ -368,13 +368,15 @@ End If
 End Sub
 
 
+
+
 Private Sub Combo3_Click()
-    Adodc1.RecordSource = "select * from Supplier where fname='" & Combo2 & "' and lname='" & Combo3 & "'"
+    Adodc1.RecordSource = "select * from Customer where fname='" & Combo2 & "' and lname='" & Combo3 & "'"
     Adodc1.Refresh
     If Adodc1.Recordset.RecordCount = 0 Then
-        MsgBox "Invalid Supplier Data", vbExclamation
+        MsgBox "Invalid Customer Data", vbExclamation
     Else
-        supid = Adodc1.Recordset.Fields(0).Value
+        cusid = Adodc1.Recordset.Fields(0).Value
         DataGrid1.Refresh
     End If
     
@@ -382,18 +384,13 @@ Private Sub Combo3_Click()
 End Sub
 
 Private Sub Command1_Click()
-'"""""""""""""""""" error handling
-If DataGrid1.DataSource Is Nothing Then
-    MsgBox "First Select Hardware", vbInformation
-    Exit Sub
-End If
-'""""""""""""""""""""""""""""""""
+
 Dim tempid As Integer
 tempid = Val(Text2.Text)
 '""""""""""""""""""""""""""""""" duplicate data entry checker
 Dim recStdcheck As ADODB.Recordset
 Set recStdcheck = New ADODB.Recordset
-recStdcheck.Open "Select Hardware.ID From Hardware,Stock_in Where Hardware.Id=Stock_in.hid And Stock_in.inid=" & Text2.Text & " ", con, adOpenDynamic, adLockPessimistic, adCmdText
+recStdcheck.Open "Select Hardware.ID From Hardware,Stock_out Where Hardware.Id=Stock_out.hid And Stock_out.outid=" & Text2.Text & " ", con, adOpenDynamic, adLockPessimistic, adCmdText
 
 If recStdcheck.RecordCount > 0 Then
    recStdcheck.MoveFirst
@@ -423,7 +420,7 @@ End With
 '""""""""""""""""""""""""""" datagrid 2
 'Dim recStdIn As ADODB.Recordset
 Set recStdIn = New ADODB.Recordset
-recStdIn.Open "Select Hardware.ID,hname,desc From Hardware,Stock_in Where Hardware.Id=Stock_in.hid And Stock_in.inid=" & Text2.Text & " ", con, adOpenDynamic, adLockPessimistic, adCmdText
+recStdIn.Open "Select Hardware.ID,hname,desc From Hardware,Stock_out Where Hardware.Id=Stock_out.hid And Stock_out.outid=" & Text2.Text & " ", con, adOpenDynamic, adLockPessimistic, adCmdText
 'datagrid2
 Set DataGrid2.DataSource = recStdIn
 DataGrid2.Refresh
@@ -431,12 +428,7 @@ DataGrid2.Refresh
 End Sub
 
 Private Sub Command2_Click()
-'+++++++++++++++++++++ error handling
-If DataGrid2.DataSource Is Nothing Then
-    MsgBox "First Add Hardware", vbInformation
-    Exit Sub
-End If
-'++++++++++++++++++++++++
+ 
  Print auto.RecordCount
  'If ((Not (auto.EOF)) Or (Not (auto.BOF))) Then
   If auto.RecordCount > 0 Then
@@ -455,7 +447,7 @@ End If
  '""""""""""""""""""""""""""" datagrid 2
  'Dim recStdIn As ADODB.Recordset
  Set recStdIn = New ADODB.Recordset
- recStdIn.Open "Select Hardware.ID,hname,desc From Hardware,Stock_in Where Hardware.Id=Stock_in.hid And Stock_in.inid=" & Text2.Text & " ", con, adOpenDynamic, adLockPessimistic, adCmdText
+ recStdIn.Open "Select Hardware.ID,hname,desc From Hardware,Stock_out Where Hardware.Id=Stock_out.hid And Stock_out.outid=" & Text2.Text & " ", con, adOpenDynamic, adLockPessimistic, adCmdText
  'datagrid2
  Set DataGrid2.DataSource = recStdIn
  DataGrid2.Refresh
@@ -465,32 +457,31 @@ End If
 End Sub
 
 Private Sub Command3_Click()
-'"""""""""""""""""" error handling
-If DataGrid2.DataSource Is Nothing Then
-    MsgBox "First Add Hardware", vbInformation
-    Exit Sub
-End If
-'""""""""""""""""""""""""""""""""
 Dim amt As Long
+'"""""""""""""""""""""""" connection == Stock_out
 Dim temp As ADODB.Recordset
 Set temp = New ADODB.Recordset
-temp.Open "select *from Stock_in where inid = " & Text2.Text & "", con, adOpenDynamic, adLockPessimistic, adCmdText
+temp.Open "select *from Stock_out where outid = " & Text2.Text & "", con, adOpenDynamic, adLockPessimistic, adCmdText
+'===================================
 
+'"""""""""""""""""""" connection == Hardware
 Dim temphard As ADODB.Recordset
 Set temphard = New ADODB.Recordset
 temphard.Open "select *from Hardware", con, adOpenDynamic, adLockPessimistic, adCmdText
+'==================================
+
 amt = 0
-    temp.MoveFirst 'stock in first data
-    While Not (temp.EOF) 'stock in iterator
+    temp.MoveFirst 'stock out first data
+    While Not (temp.EOF) 'stock out iterator
         Dim tempidh As Integer
         tempidh = temp.Fields(2).Value
         
         temphard.MoveFirst  'hardware first data
         While Not (temphard.EOF)
             If (temphard.Fields(0).Value = temp.Fields(2).Value) Then
-               amt = amt + ((temphard.Fields(4).Value) * (temp.Fields(3).Value))
+               amt = amt + ((temphard.Fields(6).Value) * (temp.Fields(3).Value))
                'MsgBox amt
-               temphard.Fields(5).Value = temphard.Fields(5).Value + temp.Fields(3).Value
+               temphard.Fields(5).Value = temphard.Fields(5).Value - temp.Fields(3).Value
             End If
             temphard.MoveNext
         Wend
@@ -500,14 +491,14 @@ MsgBox "Total payable amount : " & amt
 
 
 
-'''''''''''''''insert data into purchase table
+'''''''''''''''insert data into Sales table
     Dim purc As ADODB.Recordset
     Set purc = New ADODB.Recordset
-    purc.Open "select *from Purchase", con, adOpenDynamic, adLockPessimistic, adCmdText
+    purc.Open "select *from Sales", con, adOpenDynamic, adLockPessimistic, adCmdText
     With purc
         .AddNew
         .Fields(0).Value = CInt(Text2.Text)
-        .Fields(1).Value = supid
+        .Fields(1).Value = cusid
         .Fields(2).Value = CInt(Text2.Text)
         .Fields(3).Value = amt
         .Fields(4).Value = Date
@@ -520,16 +511,16 @@ MsgBox "Total payable amount : " & amt
 
 
 'bill report
-    With supplierBillReport
+    With customerBillReport
         .Top = frmmain.Top + 1000
         .Left = frmmain.Left + 3735
         .Height = frmmain.Height - 1000
         .Width = frmmain.Width - 3735
     End With
-DataEnvironment1.supplierBillcmd Text2
-supplierBillReport.Show
-supplierBillReport.Refresh
-DataEnvironment1.rssupplierBillcmd.Close
+DataEnvironment1.customerBillcmd Text2
+customerBillReport.Refresh
+customerBillReport.Show
+DataEnvironment1.rscustomerBillcmd.Close
 ''''''''''''''********************
 
 
@@ -540,12 +531,6 @@ Combo3.Text = "Last Name"
 Combo1.Text = "Processor"
 Set DataGrid1.DataSource = Nothing
 Set DataGrid2.DataSource = Nothing
-
-
-
-
-
-
 
 '''''''''''''''''''''*********************
 
@@ -567,7 +552,7 @@ Else
    'Print DataGrid2.Columns(0).Value
    datagrid2_id = DataGrid2.Columns(0).Value
    Set auto = New ADODB.Recordset
-   auto.Open "select *from Stock_in where inid=" & Text2.Text & " and hid =" & DataGrid2.Columns(0).Value & "", con, adOpenDynamic, adLockPessimistic, adCmdText
+   auto.Open "select *from Stock_out where outid=" & Text2.Text & " and hid =" & DataGrid2.Columns(0).Value & "", con, adOpenDynamic, adLockPessimistic, adCmdText
  
 End If
 End Sub
@@ -576,7 +561,7 @@ Private Sub Form_Load()
 
 
 '***form location
-With Form2
+With frmSales
 .BackColor = RGB(238, 238, 238)
 .Top = frmmain.Top + 1000
 .Left = frmmain.Left + 3735
@@ -584,7 +569,7 @@ With Form2
 .Width = frmmain.Width - 3735
 End With
 '******adodc1 and adding fname,lname to combo boxes
-Adodc1.RecordSource = "select * from Supplier"
+Adodc1.RecordSource = "select * from Customer"
 Adodc1.Refresh
 
 With Adodc1.Recordset
@@ -613,7 +598,7 @@ End With
 '*****database
 Call Module2.main
 Set rec = New ADODB.Recordset
-rec.Open "select *from Stock_in", con, adOpenDynamic, adLockPessimistic, adCmdText
+rec.Open "select *from Stock_out", con, adOpenDynamic, adLockPessimistic, adCmdText
 
 
 '"""""""""""""""""""""""""""""""""""" S and datagrid2
@@ -630,7 +615,7 @@ Private Sub Auto_num()
    ' Order By Product_Name DESC
    Call Module2.main
    Set auto = New ADODB.Recordset
-   auto.Open "select *from Purchase", con, adOpenDynamic, adLockPessimistic, adCmdText
+   auto.Open "select *from Sales", con, adOpenDynamic, adLockPessimistic, adCmdText
     With auto
         If .RecordCount = 0 Then
            Text2.Text = 1
