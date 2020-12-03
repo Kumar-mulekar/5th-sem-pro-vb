@@ -105,6 +105,7 @@ Begin VB.Form frmSupplier
    Begin VB.TextBox Text5 
       Height          =   495
       Left            =   7800
+      MaxLength       =   10
       TabIndex        =   5
       Text            =   "Ph.no"
       Top             =   4200
@@ -238,6 +239,7 @@ Private Sub Command4_Click()
 End Sub
 Private Sub init_textboxes()
 'show data in text boxes
+    Text1.Text = recS.Fields(0).Value
     Text2.Text = recS.Fields(1).Value
     Text7.Text = recS.Fields(2).Value
     Text3.Text = recS.Fields(3).Value
@@ -254,8 +256,9 @@ frmSupplier.Left = frmmain.Left + 3735
 frmSupplier.Height = frmmain.Height - 1000
 frmSupplier.Width = frmmain.Width - 3735
 
-'********shapes cust******
-
+'**************
+Command4.Visible = False 'hide search button
+Text1.Enabled = False
 
 '****combo1
  Combo1.AddItem "ADD"
@@ -283,18 +286,37 @@ End Sub
 Private Sub Text2_Click()
 Text2.Text = ""
 End Sub
+
+Private Sub Text2_KeyPress(KeyAscii As Integer)
+Call validateA(KeyAscii)
+End Sub
+
 Private Sub Text3_Click()
 Text3.Text = ""
 End Sub
 Private Sub Text4_Click()
 Text4.Text = ""
 End Sub
+
+Private Sub Text4_KeyPress(KeyAscii As Integer)
+Call validateE(KeyAscii)
+End Sub
+
 Private Sub Text5_Click()
 Text5.Text = ""
 End Sub
 Private Sub Text6_Click()
 Text6.Text = ""
 End Sub
+
+Private Sub Text5_KeyPress(KeyAscii As Integer)
+Call validateN(KeyAscii)
+End Sub
+
 Private Sub Text7_Click()
 Text7.Text = ""
+End Sub
+
+Private Sub Text7_KeyPress(KeyAscii As Integer)
+Call validateA(KeyAscii)
 End Sub

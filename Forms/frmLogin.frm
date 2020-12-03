@@ -335,30 +335,18 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Public tm, flef, whichframe As Integer
-Public pRecordset As adodb.Recordset
+Public pRecordset As ADODB.Recordset
 Private Sub btnlogin_Click()
 Dim flag, log As Boolean
 flag = True
-'pRecordset.MoveFirst
-'While Not pRecordset.EOF = True
-  'If pRecordset.Fields(4).Value = Text1.Text And pRecordset.Fields(0).Value = Text2.Text Then
-     'Form1.Hide
-     'userName = pRecordset.Fields(2).Value
-     'frmmain.Show
-     'flag = False
-  'End If
-  'pRecordset.MoveNext
-  
-'Wend
-'If flag = True Then
-   'MsgBox ("Invalid Details")
-'End If
+
 
 pRecordset.MoveFirst
 While Not pRecordset.EOF = True
   If pRecordset.Fields(1).Value = Text1.Text And pRecordset.Fields(2).Value = Text2.Text Then
      Form1.Hide
      userName = pRecordset.Fields(1).Value
+     userAccess = pRecordset.Fields(9).Value
      frmmain.Show
      flag = False
   End If
@@ -405,7 +393,7 @@ Frame2.Visible = False
 
 'database
 Call Module2.main
-Set pRecordset = New adodb.Recordset
+Set pRecordset = New ADODB.Recordset
 pRecordset.Open "select *from login", con, adOpenDynamic, adLockPessimistic, adCmdText
 End Sub
 

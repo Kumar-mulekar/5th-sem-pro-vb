@@ -16,7 +16,7 @@ Begin VB.Form frmStocks
       Height          =   5415
       Left            =   2400
       TabIndex        =   12
-      Top             =   1560
+      Top             =   1200
       Width           =   7935
       _ExtentX        =   13996
       _ExtentY        =   9551
@@ -271,7 +271,7 @@ Private Sub textTodata()
     recSt.Fields(3).Value = Text3.Text
     recSt.Fields(4).Value = Text4.Text
     recSt.Fields(5).Value = Text5.Text
-   
+    recSt.Fields(6).Value = Val(Text4.Text) + (Val(Text4.Text) \ 10)
 End Sub
 Private Sub initText()
     'initialize with null values
@@ -320,6 +320,7 @@ Private Sub Command4_Click()
 End Sub
 Private Sub init_textboxes()
 'show data in text boxes
+    Text1.Text = recSt.Fields(0).Value
     Combo3.Text = recSt.Fields(1).Value
     Text2.Text = recSt.Fields(2).Value
     Text3.Text = recSt.Fields(3).Value
@@ -348,7 +349,9 @@ frmStocks.Left = frmmain.Left + 3735
 frmStocks.Height = frmmain.Height - 1000
 frmStocks.Width = frmmain.Width - 3735
 
-'********shapes cust******
+'**************
+Command4.Visible = False 'hide search button
+Text1.Enabled = False
 
 
 '****combo1
@@ -392,12 +395,23 @@ End Sub
 Private Sub Text2_Click()
 Text2.Text = ""
 End Sub
+
+Private Sub Text2_KeyPress(KeyAscii As Integer)
+Call validateAN(KeyAscii)
+End Sub
+
 Private Sub Text3_Click()
 Text3.Text = ""
 End Sub
+
 Private Sub Text4_Click()
 Text4.Text = ""
 End Sub
+
+Private Sub Text4_KeyPress(KeyAscii As Integer)
+Call validateN(KeyAscii)
+End Sub
+
 Private Sub Text5_Click()
 Text5.Text = ""
 End Sub
@@ -406,4 +420,8 @@ Text6.Text = ""
 End Sub
 Private Sub Text7_Click()
 Text7.Text = ""
+End Sub
+
+Private Sub Text5_KeyPress(KeyAscii As Integer)
+Call validateN(KeyAscii)
 End Sub

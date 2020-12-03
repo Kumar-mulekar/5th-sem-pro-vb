@@ -103,8 +103,18 @@ Begin VB.Form frmcustomer
       Width           =   2175
    End
    Begin VB.TextBox Text5 
+      BeginProperty DataFormat 
+         Type            =   1
+         Format          =   "0;(0)"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   16393
+         SubFormatType   =   1
+      EndProperty
       Height          =   495
       Left            =   7800
+      MaxLength       =   10
       TabIndex        =   5
       Text            =   "Ph.no"
       Top             =   4200
@@ -141,6 +151,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim recC As ADODB.Recordset
+
 Private Sub Combo1_click()
     If Combo1.Text = "EDIT" Or Combo1.Text = "DELETE" Then
         Command4.Visible = True
@@ -188,7 +199,7 @@ Private Sub textTodata()
     recC.Fields(2).Value = Text7.Text
     recC.Fields(3).Value = Text3.Text
     recC.Fields(4).Value = Text4.Text
-    recC.Fields(5).Value = Text5.Text
+    recC.Fields(5).Value = CLng(Text5.Text)
    
 End Sub
 Private Sub initText()
@@ -238,6 +249,7 @@ Private Sub Command4_Click()
 End Sub
 Private Sub init_textboxes()
 'show data in text boxes
+    Text1.Text = recC.Fields(0).Value
     Text2.Text = recC.Fields(1).Value
     Text7.Text = recC.Fields(2).Value
     Text3.Text = recC.Fields(3).Value
@@ -254,9 +266,9 @@ frmcustomer.Left = frmmain.Left + 3735
 frmcustomer.Height = frmmain.Height - 1000
 frmcustomer.Width = frmmain.Width - 3735
 
-'********shapes cust******
-
-
+'**************
+Command4.Visible = False 'hide search button
+Text1.Enabled = False
 '****combo1
  Combo1.AddItem "ADD"
  Combo1.AddItem "EDIT"
@@ -283,18 +295,37 @@ End Sub
 Private Sub Text2_Click()
 Text2.Text = ""
 End Sub
+
+Private Sub Text2_KeyPress(KeyAscii As Integer)
+Call validateA(KeyAscii)
+End Sub
+
 Private Sub Text3_Click()
 Text3.Text = ""
 End Sub
 Private Sub Text4_Click()
 Text4.Text = ""
 End Sub
+
+Private Sub Text4_KeyPress(KeyAscii As Integer)
+Call validateE(KeyAscii)
+End Sub
+
 Private Sub Text5_Click()
 Text5.Text = ""
 End Sub
 Private Sub Text6_Click()
 Text6.Text = ""
 End Sub
+
+Private Sub Text5_KeyPress(KeyAscii As Integer)
+Call validateN(KeyAscii)
+End Sub
+
 Private Sub Text7_Click()
 Text7.Text = ""
+End Sub
+
+Private Sub Text7_KeyPress(KeyAscii As Integer)
+Call validateA(KeyAscii)
 End Sub
