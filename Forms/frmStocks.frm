@@ -21,6 +21,7 @@ Begin VB.Form frmStocks
       _ExtentX        =   13996
       _ExtentY        =   9551
       _Version        =   393216
+      AllowUpdate     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -332,6 +333,7 @@ Private Sub Command5_Click()
     If Command5.Caption = "Show Stocks" Then
         Command5.Caption = "Tap here to enter data"
         DataGrid1.Visible = True
+        recSt.Resync
         DataGrid1.Refresh
     ElseIf Command5.Caption = "Tap here to enter data" Then
         Command5.Caption = "Show Stocks"

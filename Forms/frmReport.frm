@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmReport 
    BorderStyle     =   0  'None
    Caption         =   "Form4"
@@ -153,6 +154,35 @@ Begin VB.Form frmReport
          Top             =   1680
          Width           =   2175
       End
+      Begin MSComCtl2.DTPicker DTPicker2 
+         Height          =   375
+         Left            =   1680
+         TabIndex        =   26
+         Top             =   1200
+         Width           =   1215
+         _ExtentX        =   2143
+         _ExtentY        =   661
+         _Version        =   393216
+         Format          =   125894657
+         CurrentDate     =   44170
+      End
+      Begin VB.Label Label9 
+         Caption         =   "Date"
+         BeginProperty Font 
+            Name            =   "Lucida Bright"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   600
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   840
+         TabIndex        =   25
+         Top             =   1200
+         Width           =   735
+      End
       Begin VB.Label Label5 
          Alignment       =   2  'Center
          Caption         =   "SALES"
@@ -178,6 +208,18 @@ Begin VB.Form frmReport
       TabIndex        =   9
       Top             =   2880
       Width           =   3855
+      Begin MSComCtl2.DTPicker DTPicker1 
+         Height          =   375
+         Left            =   1680
+         TabIndex        =   24
+         Top             =   1200
+         Width           =   1215
+         _ExtentX        =   2143
+         _ExtentY        =   661
+         _Version        =   393216
+         Format          =   125698049
+         CurrentDate     =   44170
+      End
       Begin VB.CommandButton Command4 
          Caption         =   "SHOW"
          BeginProperty Font 
@@ -194,6 +236,23 @@ Begin VB.Form frmReport
          TabIndex        =   10
          Top             =   1680
          Width           =   2175
+      End
+      Begin VB.Label Label8 
+         Caption         =   "Date"
+         BeginProperty Font 
+            Name            =   "Lucida Bright"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   600
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   840
+         TabIndex        =   23
+         Top             =   1200
+         Width           =   735
       End
       Begin VB.Label Label4 
          Alignment       =   2  'Center
@@ -384,13 +443,58 @@ Private Sub Command3_Click()
     DataEnvironment1.rsCommand3.Close
 End Sub
 
+Private Sub Command4_Click()
+    With purchaseReportByMonth
+        .Top = frmmain.Top + 1000
+        .Left = frmmain.Left + 3735
+        .Height = frmmain.Height - 1000
+        .Width = frmmain.Width - 3735
+    End With
+    Call Module2.main
+    DataEnvironment1.purchaseReportByMonthcmd DTPicker1.Month, DTPicker1.Year
+    purchaseReportByMonth.Show
+    purchaseReportByMonth.Refresh
+    DataEnvironment1.rspurchaseReportByMonthcmd.Close
+End Sub
+
+Private Sub Command5_Click()
+    With purchaseReportByMonth
+        .Top = frmmain.Top + 1000
+        .Left = frmmain.Left + 3735
+        .Height = frmmain.Height - 1000
+        .Width = frmmain.Width - 3735
+    End With
+    Call Module2.main
+    DataEnvironment1.purchaseReportByMonthcmd DTPicker1.Month, DTPicker1.Year
+    purchaseReportByMonth.Show
+    purchaseReportByMonth.Refresh
+    DataEnvironment1.rspurchaseReportByMonthcmd.Close
+End Sub
+
 Private Sub Command6_Click()
+    If "Enter Purchase ID" = Text2.Text Or Text2.Text = "" Then
+        MsgBox "Enter Purchase ID ", vbInformation
+        Exit Sub
+    End If
     With supplierBillReport
         .Top = frmmain.Top + 1000
         .Left = frmmain.Left + 3735
         .Height = frmmain.Height - 1000
         .Width = frmmain.Width - 3735
     End With
+    '+++++++++++++++++++++++++++ supplier name - dynamic
+    Call Module2.main
+    Dim namePrinter As ADODB.Recordset
+    Set namePrinter = New ADODB.Recordset
+    namePrinter.Open "select fname,lname,Purchase.amt from Supplier,Purchase where Purchase.ID = " & Text2.Text & " AND Supplier.ID=sid", con, adOpenDynamic, adLockPessimistic, adCmdText
+    If namePrinter.EOF Then
+        MsgBox "Invalid Id", vbInformation
+        Exit Sub
+    End If
+    supplierBillReport.Sections.Item("Section4").Controls.Item("Label4").Caption = namePrinter.Fields("fname").Value
+    supplierBillReport.Sections.Item("Section4").Controls.Item("Label13").Caption = namePrinter.Fields("lname").Value
+    customerBillReport.Sections.Item("Section5").Controls.Item("Label7").Caption = "Total amount : " & namePrinter.Fields("amt").Value & " Rs."
+    '++++++++++++++++++++++++++++++++++++++++++++++++
     DataEnvironment1.supplierBillcmd Text2
     supplierBillReport.Show
     supplierBillReport.Refresh
@@ -398,12 +502,29 @@ Private Sub Command6_Click()
 End Sub
 
 Private Sub Command7_Click()
+    If "Enter Sales ID" = Text1.Text Or Text1.Text = "" Then
+        MsgBox "Enter Sales ID", vbInformation
+        Exit Sub
+    End If
     With customerBillReport
         .Top = frmmain.Top + 1000
         .Left = frmmain.Left + 3735
         .Height = frmmain.Height - 1000
         .Width = frmmain.Width - 3735
     End With
+    '+++++++++++++++++++++++++++ customer name - dynamic
+    Call Module2.main
+    Dim namePrinter As ADODB.Recordset
+    Set namePrinter = New ADODB.Recordset
+    namePrinter.Open "select fname,lname,Sales.amt from Customer,Sales where Sales.ID = " & Text1.Text & " AND Customer.ID=cid", con, adOpenDynamic, adLockPessimistic, adCmdText
+    If namePrinter.EOF Then
+        MsgBox "Invalid Id", vbInformation
+        Exit Sub
+    End If
+    customerBillReport.Sections.Item("Section4").Controls.Item("Label4").Caption = namePrinter.Fields("fname").Value
+    customerBillReport.Sections.Item("Section4").Controls.Item("Label12").Caption = namePrinter.Fields("lname").Value
+    customerBillReport.Sections.Item("Section5").Controls.Item("Label7").Caption = "Total amount : " & namePrinter.Fields("amt").Value & " Rs."
+    '++++++++++++++++++++++++++++++++++++++++++++++++
     DataEnvironment1.customerBillcmd Text1
     customerBillReport.Show
     customerBillReport.Refresh
@@ -422,3 +543,9 @@ End With
 '++++++++++++++++++++++++++++++++++
 End Sub
 
+Private Sub Text2_KeyPress(KeyAscii As Integer)
+Call validateN(KeyAscii)
+End Sub
+Private Sub Text1_KeyPress(KeyAscii As Integer)
+Call validateN(KeyAscii)
+End Sub

@@ -1,6 +1,5 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
-Object = "{BD0C1912-66C3-49CC-8B12-7B347BF6C846}#18.6#0"; "CO23AE~1.OCX"
 Begin VB.Form Form1 
    BorderStyle     =   0  'None
    Caption         =   "login"
@@ -85,14 +84,6 @@ Begin VB.Form Form1
          TabIndex        =   6
          Top             =   1920
          Width           =   1695
-      End
-      Begin XtremeSkinFramework.SkinFramework skn 
-         Left            =   3120
-         Top             =   360
-         _Version        =   1179654
-         _ExtentX        =   635
-         _ExtentY        =   635
-         _StockProps     =   0
       End
       Begin VB.Label Label4 
          BackStyle       =   0  'Transparent
@@ -349,6 +340,7 @@ While Not pRecordset.EOF = True
      userAccess = pRecordset.Fields(9).Value
      frmmain.Show
      flag = False
+     Unload Me
   End If
   pRecordset.MoveNext
   
@@ -385,9 +377,9 @@ End Sub
 Private Sub Form_Load()
 
 Form1.Picture = Nothing
-skn.LoadSkin App.Path + "\Styles\Office2010.cjstyles", ""
+'skn.LoadSkin App.Path + "\Styles\Office2010.cjstyles", ""
 'Office2007 Office2010  WinXP.Luna WinXP.Royale Codejock
-skn.ApplyWindow Me.hWnd
+'skn.ApplyWindow Me.hWnd
 Frame2.Visible = False
 
 
