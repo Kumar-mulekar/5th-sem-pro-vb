@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{BD0C1912-66C3-49CC-8B12-7B347BF6C846}#18.6#0"; "CO23AE~1.OCX"
 Begin VB.Form frmmain 
    BorderStyle     =   0  'None
    Caption         =   "Form2"
@@ -14,11 +13,26 @@ Begin VB.Form frmmain
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame2 
       BorderStyle     =   0  'None
-      Height          =   975
+      Height          =   1000
       Left            =   0
       TabIndex        =   9
       Top             =   0
-      Width           =   11655
+      Width           =   17010
+      Begin VB.Image Image3 
+         Height          =   495
+         Left            =   15600
+         Stretch         =   -1  'True
+         Top             =   240
+         Width           =   495
+      End
+      Begin VB.Image Image2 
+         Height          =   495
+         Left            =   16320
+         Picture         =   "frmMain.frx":0000
+         Stretch         =   -1  'True
+         Top             =   240
+         Width           =   495
+      End
       Begin VB.Label Label10 
          Appearance      =   0  'Flat
          BackColor       =   &H80000005&
@@ -52,7 +66,7 @@ Begin VB.Form frmmain
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FFFFFF&
-         Height          =   615
+         Height          =   735
          Left            =   240
          TabIndex        =   10
          Top             =   240
@@ -90,14 +104,6 @@ Begin VB.Form frmmain
          X2              =   3720
          Y1              =   1200
          Y2              =   1200
-      End
-      Begin XtremeSkinFramework.SkinFramework skn 
-         Left            =   480
-         Top             =   1800
-         _Version        =   1179654
-         _ExtentX        =   635
-         _ExtentY        =   635
-         _StockProps     =   0
       End
       Begin VB.Label Label8 
          Caption         =   "EXIT"
@@ -243,6 +249,14 @@ Begin VB.Form frmmain
          Top             =   1800
          Width           =   2415
       End
+      Begin VB.Image Image1 
+         Height          =   9495
+         Left            =   0
+         Picture         =   "frmMain.frx":15C8
+         Stretch         =   -1  'True
+         Top             =   120
+         Width           =   3735
+      End
    End
 End
 Attribute VB_Name = "frmmain"
@@ -257,14 +271,15 @@ Dim lblcl, lblpre As Integer
 Private Sub Form_Load()
 lblcl = 0
 '**********frmMain**********
-skn.LoadSkin App.Path + "\Styles\Office2010.cjstyles", ""
+'skn.LoadSkin App.Path + "\Styles\Office2010.cjstyles", ""
 'Office2007 Office2010  WinXP.Luna WinXP.Royale Codejock
-skn.ApplyWindow Me.hWnd
+'skn.ApplyWindow Me.hWnd
 
+Image1.Picture = LoadPicture(App.Path + "\img_res\frame3.jpg")
+Image2.Picture = LoadPicture(App.Path + "\img_res\padlock.gif")
+Image3.Picture = LoadPicture(App.Path + "\img_res\info 24.ico")
+'""""""""""""""""""""""""""""""""""""""
 frmmain.BackColor = RGB(238, 238, 238)
-
-
-
 '**************frame 1***************
 Frame1.BackColor = RGB(51, 49, 44)
 Label1.BackColor = RGB(51, 49, 44)
@@ -302,6 +317,17 @@ Else
 End If
 
 '++++++++++++++++++++++++++++++++++
+DataEnvironment1.Connection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & App.Path & "\Databases\ProData.mdb;Persist Security Info=False"
+End Sub
+
+Private Sub Image2_Click()
+    Call lblclick
+    Form1.Show
+    Unload Me
+End Sub
+
+Private Sub Image3_Click()
+frmAbout.Show
 End Sub
 
 Private Sub Label1_Click()
@@ -388,28 +414,38 @@ frmReport.Show
 End Sub
 
 Private Sub Label8_Click()
-End
+   If vbYes = MsgBox("Are you sure?", vbCritical + vbYesNo) Then
+        End
+   End If
 End Sub
 Public Sub lblclick()
 Select Case (lblpre)
-   Case 1:
-   Label1.BackColor = RGB(51, 49, 44)
-   Case 2:
-Label2.BackColor = RGB(51, 49, 44)
-Case 3:
-Label3.BackColor = RGB(51, 49, 44)
-Case 4:
-Label4.BackColor = RGB(51, 49, 44)
-Case 5:
-Label5.BackColor = RGB(51, 49, 44)
-Case 6:
-Label6.BackColor = RGB(51, 49, 44)
-Case 7:
-Label7.BackColor = RGB(51, 49, 44)
-Case 8:
-Label8.BackColor = RGB(51, 49, 44)
-Case 11:
-Label11.BackColor = RGB(51, 49, 44)
+    Case 1:
+        Label1.BackColor = RGB(51, 49, 44)
+    Case 2:
+        Label2.BackColor = RGB(51, 49, 44)
+        Unload frmcustomer
+    Case 3:
+        Label3.BackColor = RGB(51, 49, 44)
+        Unload frmSupplier
+    Case 4:
+        Label4.BackColor = RGB(51, 49, 44)
+        Unload frmSales
+    Case 5:
+        Label5.BackColor = RGB(51, 49, 44)
+        Unload Form2
+    Case 6:
+        Label6.BackColor = RGB(51, 49, 44)
+        Unload frmStocks
+    Case 7:
+        Label7.BackColor = RGB(51, 49, 44)
+        Unload frmReport
+    Case 8:
+        Label8.BackColor = RGB(51, 49, 44)
+        
+    Case 11:
+        Label11.BackColor = RGB(51, 49, 44)
+        Unload frmUser
 End Select
 
          

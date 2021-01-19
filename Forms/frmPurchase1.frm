@@ -98,7 +98,6 @@ Begin VB.Form Form2
       AllowUpdate     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
-      AllowDelete     =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -244,7 +243,6 @@ Begin VB.Form Form2
       AllowUpdate     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
-      AllowDelete     =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -526,6 +524,14 @@ MsgBox "Total payable amount : " & amt
         .Height = frmmain.Height - 1000
         .Width = frmmain.Width - 3735
     End With
+    '+++++++++++++++++++++++++++ supplier name - dynamic
+    Dim namePrinter As ADODB.Recordset
+    Set namePrinter = New ADODB.Recordset
+    namePrinter.Open "select fname,lname,Purchase.amt from Supplier,Purchase where Purchase.ID = " & Text2.Text & " AND Supplier.ID=sid", con, adOpenDynamic, adLockPessimistic, adCmdText
+    supplierBillReport.Sections.Item("Section4").Controls.Item("Label4").Caption = namePrinter.Fields("fname").Value
+    supplierBillReport.Sections.Item("Section4").Controls.Item("Label13").Caption = namePrinter.Fields("lname").Value
+    supplierBillReport.Sections.Item("Section5").Controls.Item("Label6").Caption = "Total Amount : " & namePrinter.Fields("amt").Value & " Rs."
+    '++++++++++++++++++++++++++++++++++++++++++++++++
 DataEnvironment1.supplierBillcmd Text2
 supplierBillReport.Show
 supplierBillReport.Refresh
@@ -555,7 +561,7 @@ Private Sub DataGrid1_Click()
 If DataGrid1.DataSource Is Nothing Then
     MsgBox "Empty"
 Else
-   'Print DataGrid1.Columns(0).Value
+   'Print DataGrid1.
    datagrid1_id = DataGrid1.Columns(0).Value
 End If
 End Sub
@@ -573,6 +579,9 @@ End If
 End Sub
 
 Private Sub Form_Load()
+'************************adodc
+Adodc1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & App.Path & "\Databases\ProData.mdb;Persist Security Info=False"
+S.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & App.Path & "\Databases\ProData.mdb;Persist Security Info=False"
 
 
 '***form location

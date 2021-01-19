@@ -68,7 +68,7 @@ Begin VB.Form frmUser
    End
    Begin VB.TextBox Text5 
       Height          =   615
-      Left            =   7080
+      Left            =   7920
       MaxLength       =   10
       TabIndex        =   5
       Text            =   "Phone No"
@@ -77,7 +77,7 @@ Begin VB.Form frmUser
    End
    Begin VB.TextBox Text4 
       Height          =   615
-      Left            =   2640
+      Left            =   1920
       TabIndex        =   4
       Text            =   "Email"
       Top             =   2520
@@ -85,19 +85,19 @@ Begin VB.Form frmUser
    End
    Begin VB.TextBox Text3 
       Height          =   615
-      Left            =   2640
+      Left            =   1920
       TabIndex        =   3
       Text            =   "Address"
       Top             =   1680
-      Width           =   6855
+      Width           =   8415
    End
    Begin VB.TextBox Text2 
       Height          =   615
-      Left            =   6720
+      Left            =   6600
       TabIndex        =   2
       Text            =   "Last Name"
       Top             =   840
-      Width           =   2775
+      Width           =   3735
    End
    Begin VB.Frame Frame1 
       Height          =   2895
@@ -107,11 +107,11 @@ Begin VB.Form frmUser
       Width           =   9135
       Begin VB.TextBox Text1 
          Height          =   615
-         Left            =   1080
+         Left            =   360
          TabIndex        =   1
          Text            =   "First Name"
          Top             =   360
-         Width           =   2775
+         Width           =   3735
       End
    End
 End

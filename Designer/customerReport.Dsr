@@ -11,7 +11,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} customerReport
    _ExtentY        =   26273
    _Version        =   393216
    _DesignerVersion=   100684101
-   ReportWidth     =   8810
+   ReportWidth     =   8805
    BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
       Name            =   "Arial"
       Size            =   8.25
@@ -33,8 +33,57 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} customerReport
    BeginProperty Section0 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
       _Version        =   393216
       Name            =   "Section4"
-      Object.Height          =   360
-      NumControls     =   0
+      Object.Height          =   1830
+      NumControls     =   3
+      ItemType0       =   3
+      BeginProperty Item0 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Label10"
+         Object.Width           =   8504
+         Object.Height          =   1134
+         BorderColor     =   16777215
+         Object.BorderStyle     =   1
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Lucida Bright"
+            Size            =   36
+            Charset         =   0
+            Weight          =   600
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   12640511
+         BackColor       =   16761024
+         BackStyle       =   1
+         Object.Caption         =   "Master's Computer"
+         Alignment       =   2
+      EndProperty
+      ItemType1       =   3
+      BeginProperty Item1 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Label7"
+         Object.Top             =   1134
+         Object.Width           =   8505
+         Object.Height          =   555
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Lucida Bright"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   600
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Object.Caption         =   "S.No.167 Nivrutti Nagar, Mahadeonagar, Manjri Bk, Pune, Maharashtra 412307"
+         Alignment       =   2
+      EndProperty
+      ItemType2       =   5
+      BeginProperty Item2 {1C13A8E3-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Line1"
+         Object.Top             =   1701
+         Object.Width           =   8504
+      EndProperty
    EndProperty
    SectionCode1    =   2
    BeginProperty Section1 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
@@ -335,7 +384,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} customerReport
    BeginProperty Section4 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
       _Version        =   393216
       Name            =   "Section5"
-      Object.Height          =   90
+      Object.Height          =   105
       NumControls     =   0
    EndProperty
 End

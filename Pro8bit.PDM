@@ -1,0 +1,299 @@
+[Root]
+Most Recent Package=Masters Computers
+
+
+[Package|8bit computers|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)
+
+[Package|8bit computers|Configure DAO ISAMs]
+Applicable=Yes
+Jet 2.x=Yes
+
+[Package|8bit computers|Configure DAO ODBC]
+JetWorkspace=Yes
+ODBCDirect=Yes
+
+[Package|8bit computers|Files Found]
+
+[Package|8bit computers|Files Released]
+
+[Package|8bit computers|Missing Dependency Information]
+C:\Windows\System32\ieframe.dll=
+C:\Program Files\Codejock Software\ActiveX\Xtreme SuitePro ActiveX v18.6.0 (30 Day Trial)\Bin\Codejock.SkinFramework.v18.6.0.Demo.ocx=
+C:\Program Files\Common Files\System\ado\msado26.tlb=
+C:\Windows\System32\wmp.dll=
+
+[Package|8bit computers|Out-of-Date Dependency Information]
+C:\Windows\System32\MSSTDFMT.DLL=
+C:\Windows\System32\MSCOMCTL.OCX=
+
+[Package|8bit computers|Files Added]
+
+[Package|8bit computers|Files Removed]
+
+[Package|8bit computers|Files In Project]
+C:\Users\HYDRA\Desktop\Sem-5-pro\Pro8bit.exe=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\System32\wmp.dll=Yes
+C:\Program Files\Common Files\microsoft shared\DAO\DAO2535.TLB=Yes
+C:\Program Files\Common Files\microsoft shared\DAO\DAO350.DLL=Yes
+C:\Windows\System32\MSJET35.DLL=Yes
+C:\Windows\System32\MSJTER35.DLL=Yes
+C:\Windows\System32\MSJINT35.DLL=Yes
+C:\Windows\System32\vbajet32.dll=Yes
+C:\Windows\System32\expsrv.dll=Yes
+C:\Windows\System32\MSRD2X35.DLL=Yes
+C:\Windows\System32\MSREPL35.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+C:\Windows\System32\VB5DB.DLL=Yes
+C:\Program Files\Common Files\System\ado\msado26.tlb=Yes
+C:\Windows\System32\MSCOMCTL.OCX=Yes
+C:\Program Files\Codejock Software\ActiveX\Xtreme SuitePro ActiveX v18.6.0 (30 Day Trial)\Bin\Codejock.SkinFramework.v18.6.0.Demo.ocx=Yes
+C:\Windows\System32\MSADODC.OCX=Yes
+C:\Windows\System32\MSSTDFMT.DLL=Yes
+C:\Windows\System32\ieframe.dll=Yes
+C:\Windows\System32\MSDATGRD.OCX=Yes
+C:\Windows\System32\MSCOMCT2.OCX=Yes
+C:\Windows\System32\MSHFLXGD.OCX=Yes
+C:\Windows\System32\MSBIND.DLL=Yes
+C:\Program Files\Common Files\designer\MSDERUN.DLL=Yes
+C:\Windows\System32\MSDBRPTR.DLL=Yes
+C:\Windows\System32\MSRDO20.DLL=Yes
+C:\Windows\System32\RDOCURS.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|8bit computers|Configure Registry Files]
+Applicable=No
+
+[Package|8bit computers|Configure Remote Servers]
+Applicable=No
+
+[Package|8bit computers|Install Locations]
+C:\Users\HYDRA\Desktop\Sem-5-pro\Pro8bit.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\wmp.dll=$(AppPath)
+C:\Program Files\Common Files\microsoft shared\DAO\DAO2535.TLB=$(MSDAOPath)
+C:\Program Files\Common Files\microsoft shared\DAO\DAO350.DLL=$(MSDAOPath)
+C:\Windows\System32\MSJET35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSJTER35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSJINT35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\vbajet32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\expsrv.dll=$(WinSysPathSysFile)
+C:\Windows\System32\MSRD2X35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSREPL35.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\VB5DB.DLL=$(WinSysPath)
+C:\Program Files\Common Files\System\ado\msado26.tlb=$(WinSysPath)
+C:\Windows\System32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Program Files\Codejock Software\ActiveX\Xtreme SuitePro ActiveX v18.6.0 (30 Day Trial)\Bin\Codejock.SkinFramework.v18.6.0.Demo.ocx=$(WinSysPath)
+C:\Windows\System32\MSADODC.OCX=$(WinSysPath)
+C:\Windows\System32\MSSTDFMT.DLL=$(WinSysPath)
+C:\Windows\System32\ieframe.dll=$(WinSysPath)
+C:\Windows\System32\MSDATGRD.OCX=$(WinSysPath)
+C:\Windows\System32\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\System32\MSHFLXGD.OCX=$(WinSysPath)
+C:\Windows\System32\MSBIND.DLL=$(WinSysPath)
+C:\Program Files\Common Files\designer\MSDERUN.DLL=$(CommonFiles)\designer
+C:\Windows\System32\MSDBRPTR.DLL=$(WinSysPath)
+C:\Windows\System32\MSRDO20.DLL=$(WinSysPath)
+C:\Windows\System32\RDOCURS.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|8bit computers|Configure Shared Files]
+Applicable=Yes
+C:\Users\HYDRA\Desktop\Sem-5-pro\Pro8bit.exe=No
+C:\Windows\System32\wmp.dll=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+
+[Package|8bit computers|Distribution]
+Type=single
+Size=
+Title=Pro8bit
+
+[Package|8bit computers|IconGroups]
+Group0=Pro8bit
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|8bit computers|Pro8bit]
+Icon1=Pro8bit.exe
+Title1=Pro8bit
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|8bit computers|Package]
+PackageFolder=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)
+ProjectFolder=C:\Users\HYDRA\Desktop\Sem-5-pro
+ServerSideCab=
+File1=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)\setup.exe
+File2=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)\Setup.Lst
+File3=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)\Pro8bit.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Masters Computers|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)
+
+[Package|Masters Computers|Configure DAO ISAMs]
+Applicable=Yes
+Jet 2.x=Yes
+
+[Package|Masters Computers|Configure DAO ODBC]
+JetWorkspace=Yes
+ODBCDirect=Yes
+
+[Package|Masters Computers|Files Found]
+
+[Package|Masters Computers|Files Released]
+
+[Package|Masters Computers|Missing Dependency Information]
+C:\Windows\System32\ieframe.dll=
+C:\Program Files\Codejock Software\ActiveX\Xtreme SuitePro ActiveX v18.6.0 (30 Day Trial)\Bin\Codejock.SkinFramework.v18.6.0.Demo.ocx=
+C:\Program Files\Common Files\System\ado\msado26.tlb=
+C:\Windows\System32\wmp.dll=
+
+[Package|Masters Computers|Out-of-Date Dependency Information]
+C:\Windows\System32\MSSTDFMT.DLL=
+C:\Windows\System32\MSCOMCTL.OCX=
+
+[Package|Masters Computers|Files Added]
+
+[Package|Masters Computers|Files Removed]
+
+[Package|Masters Computers|Files In Project]
+C:\Users\HYDRA\Desktop\Sem-5-pro\Pro8bit.exe=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\System32\wmp.dll=Yes
+C:\Program Files\Common Files\microsoft shared\DAO\DAO2535.TLB=Yes
+C:\Program Files\Common Files\microsoft shared\DAO\DAO350.DLL=Yes
+C:\Windows\System32\MSJET35.DLL=Yes
+C:\Windows\System32\MSJTER35.DLL=Yes
+C:\Windows\System32\MSJINT35.DLL=Yes
+C:\Windows\System32\vbajet32.dll=Yes
+C:\Windows\System32\expsrv.dll=Yes
+C:\Windows\System32\MSRD2X35.DLL=Yes
+C:\Windows\System32\MSREPL35.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=Yes
+C:\Windows\System32\VB5DB.DLL=Yes
+C:\Program Files\Common Files\System\ado\msado26.tlb=Yes
+C:\Windows\System32\MSCOMCTL.OCX=Yes
+C:\Windows\System32\MSADODC.OCX=Yes
+C:\Windows\System32\MSSTDFMT.DLL=Yes
+C:\Windows\System32\MSDATGRD.OCX=Yes
+C:\Windows\System32\MSCOMCT2.OCX=Yes
+C:\Windows\System32\MSBIND.DLL=Yes
+C:\Program Files\Common Files\designer\MSDERUN.DLL=Yes
+C:\Windows\System32\MSDBRPTR.DLL=Yes
+C:\Windows\System32\MSRDO20.DLL=Yes
+C:\Windows\System32\RDOCURS.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Windows\System32\Codejock.SkinFramework.v18.6.0.Demo.ocx=Yes
+
+[Package|Masters Computers|Configure Registry Files]
+Applicable=No
+
+[Package|Masters Computers|Configure Remote Servers]
+Applicable=No
+
+[Package|Masters Computers|Install Locations]
+C:\Users\HYDRA\Desktop\Sem-5-pro\Pro8bit.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\wmp.dll=$(AppPath)
+C:\Program Files\Common Files\microsoft shared\DAO\DAO2535.TLB=$(MSDAOPath)
+C:\Program Files\Common Files\microsoft shared\DAO\DAO350.DLL=$(MSDAOPath)
+C:\Windows\System32\MSJET35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSJTER35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSJINT35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\vbajet32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\expsrv.dll=$(WinSysPathSysFile)
+C:\Windows\System32\MSRD2X35.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\MSREPL35.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\VB5DB.DLL=$(WinSysPath)
+C:\Program Files\Common Files\System\ado\msado26.tlb=$(WinSysPath)
+C:\Windows\System32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Program Files\Codejock Software\ActiveX\Xtreme SuitePro ActiveX v18.6.0 (30 Day Trial)\Bin\Codejock.SkinFramework.v18.6.0.Demo.ocx=$(WinSysPath)
+C:\Windows\System32\MSADODC.OCX=$(WinSysPath)
+C:\Windows\System32\MSSTDFMT.DLL=$(WinSysPath)
+C:\Windows\System32\ieframe.dll=$(WinSysPath)
+C:\Windows\System32\MSDATGRD.OCX=$(WinSysPath)
+C:\Windows\System32\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\System32\MSHFLXGD.OCX=$(WinSysPath)
+C:\Windows\System32\MSBIND.DLL=$(WinSysPath)
+C:\Program Files\Common Files\designer\MSDERUN.DLL=$(CommonFiles)\designer
+C:\Windows\System32\MSDBRPTR.DLL=$(WinSysPath)
+C:\Windows\System32\MSRDO20.DLL=$(WinSysPath)
+C:\Windows\System32\RDOCURS.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Windows\System32\Codejock.SkinFramework.v18.6.0.Demo.ocx=$(WinSysPath)
+
+[Package|Masters Computers|Configure Shared Files]
+Applicable=Yes
+C:\Users\HYDRA\Desktop\Sem-5-pro\Pro8bit.exe=Yes
+C:\Windows\System32\wmp.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+
+[Package|Masters Computers|Distribution]
+Type=single
+Size=
+Title=Masters Computers
+
+[Package|Masters Computers|Package]
+PackageFolder=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)
+ProjectFolder=C:\Users\HYDRA\Desktop\Sem-5-pro
+ServerSideCab=
+File1=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)\setup.exe
+File2=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)\Setup.Lst
+File3=C:\Users\HYDRA\Desktop\Sem-5-pro\Package (2)\Pro8bit.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Masters Computers|IconGroups]
+Group0=Pro8bit
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Masters Computers|Pro8bit]
+Icon1=Pro8bit.exe
+Title1=Pro8bit
+StartIn1=$(AppPath)
+Key1=Icon1

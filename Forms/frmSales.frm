@@ -98,7 +98,6 @@ Begin VB.Form frmSales
       AllowUpdate     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
-      AllowDelete     =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -244,7 +243,6 @@ Begin VB.Form frmSales
       AllowUpdate     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
-      AllowDelete     =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -517,6 +515,14 @@ MsgBox "Total payable amount : " & amt
         .Height = frmmain.Height - 1000
         .Width = frmmain.Width - 3735
     End With
+    '+++++++++++++++++++++++++++ customer name - dynamic
+    Dim namePrinter As ADODB.Recordset
+    Set namePrinter = New ADODB.Recordset
+    namePrinter.Open "select fname,lname,amt from Customer,Sales where Sales.ID = " & Text2.Text & " AND Customer.ID=cid", con, adOpenDynamic, adLockPessimistic, adCmdText
+    customerBillReport.Sections.Item("Section4").Controls.Item("Label4").Caption = namePrinter.Fields("fname").Value
+    customerBillReport.Sections.Item("Section4").Controls.Item("Label12").Caption = namePrinter.Fields("lname").Value
+    customerBillReport.Sections.Item("Section5").Controls.Item("Label7").Caption = "Total amount : " & namePrinter.Fields("amt").Value & " Rs."
+    '++++++++++++++++++++++++++++++++++++++++++++++++
 DataEnvironment1.customerBillcmd Text2
 customerBillReport.Refresh
 customerBillReport.Show
@@ -558,7 +564,9 @@ End If
 End Sub
 
 Private Sub Form_Load()
-
+'************************adodc
+Adodc1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & App.Path & "\Databases\ProData.mdb;Persist Security Info=False"
+S.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & App.Path & "\Databases\ProData.mdb;Persist Security Info=False"
 
 '***form location
 With frmSales
